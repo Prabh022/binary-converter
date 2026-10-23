@@ -6,6 +6,8 @@
 class BinaryConverter {
 public:
     static std::string decimalToBinary(int decimal);
+    static std::string decimalToHex(int decimal);
+    static std::string decimalToOctal(int decimal);
     static int binaryToDecimal(const std::string& binary);
     static bool isValidBinary(const std::string& binary);
 };

@@ -21,3 +21,14 @@ Standalone extraction from `cpp-projects-portfolio` (folder `binary-converter/`)
 - `Binary_Converter.sln` / `Binary_Converter.vcxproj` — Visual Studio solution/project files; the program builds directly with g++ (see README).
 - The original `Readme.md` was replaced by this repo's `README.md` (same feature list — the original readme's claims were checked against the code and all of them are real).
 - The original folder `.gitignore` (a Visual Studio template) was replaced with a minimal one covering the compiled binary.
+
+## 2026-10-23 — Decimal to hex and octal
+
+- Added `BinaryConverter::decimalToHex` and `BinaryConverter::decimalToOctal`
+  (menu options 9 and 10; Exit moved to 11). Both follow the existing rules:
+  negative input is rejected with "Negative numbers not supported." and 0
+  converts to "0". Successful conversions are recorded in the session history.
+- Verified: compiled with `g++ -std=c++17 -Wall -Wextra` (zero warnings).
+  Scripted run: 255 → Hex `FF`; 64 → Octal `100`; 0 → `0` in both; -5 →
+  error and back to menu; history listed all conversions in order; existing
+  decimal→binary conversion unchanged (42 → `101010`).

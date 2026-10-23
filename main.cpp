@@ -19,7 +19,9 @@ int main() {
         std::cout << "6. Bitwise OR\n";
         std::cout << "7. Bitwise XOR\n";
         std::cout << "8. Show History\n";
-        std::cout << "9. Exit\n";
+        std::cout << "9. Decimal to Hex\n";
+        std::cout << "10. Decimal to Octal\n";
+        std::cout << "11. Exit\n";
         std::cout << "Enter your choice: ";
         std::cin >> choice;
 
@@ -88,6 +90,22 @@ int main() {
                 HistoryManager::showHistory();
             }
             else if (choice == 9) {
+                int decimal;
+                std::cout << "Decimal number: ";
+                std::cin >> decimal;
+                std::string hex = BinaryConverter::decimalToHex(decimal);
+                std::cout << " Hex: " << hex << "\n";
+                HistoryManager::addRecord("Decimal " + std::to_string(decimal) + " \u2192 Hex " + hex);
+            }
+            else if (choice == 10) {
+                int decimal;
+                std::cout << "Decimal number: ";
+                std::cin >> decimal;
+                std::string octal = BinaryConverter::decimalToOctal(decimal);
+                std::cout << " Octal: " << octal << "\n";
+                HistoryManager::addRecord("Decimal " + std::to_string(decimal) + " \u2192 Octal " + octal);
+            }
+            else if (choice == 11) {
                 std::cout << " Exiting Binary Converter. See you again!\n";
                 break;
             }
