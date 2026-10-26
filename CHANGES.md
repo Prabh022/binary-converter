@@ -22,6 +22,18 @@ Standalone extraction from `cpp-projects-portfolio` (folder `binary-converter/`)
 - The original `Readme.md` was replaced by this repo's `README.md` (same feature list — the original readme's claims were checked against the code and all of them are real).
 - The original folder `.gitignore` (a Visual Studio template) was replaced with a minimal one covering the compiled binary.
 
+## 2026-10-26 — Automated tests for BinaryConverter
+
+- Added `tests/test_converter.cpp`: 18 checks covering decimal→binary,
+  decimal→hex, decimal→octal, binary→decimal, `isValidBinary`, and the
+  error paths (negative input and non-binary strings throw
+  `std::invalid_argument`). The test file is standalone — it compiles
+  against `BinaryConverter.cpp` only and does not change the app build.
+- `README.md` gained a Tests section and the project-structure listing.
+- Verified: compiled with `g++ -std=c++17 -Wall -Wextra` (zero warnings)
+  and the suite printed `18 passed, 0 failed` with exit 0. The main app
+  still builds cleanly and its menu is untouched.
+
 ## 2026-10-23 — Decimal to hex and octal
 
 - Added `BinaryConverter::decimalToHex` and `BinaryConverter::decimalToOctal`

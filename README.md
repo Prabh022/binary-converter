@@ -36,6 +36,18 @@ g++ -std=c++17 -Wall -Wextra -o binary_converter main.cpp BinaryConverter.cpp Bi
 ./binary_converter
 ```
 
+## Tests
+
+Automated checks for `BinaryConverter` live in `tests/test_converter.cpp`
+(they cover decimal ↔ binary, hex, octal, validation, and the error paths):
+
+```bash
+g++ -std=c++17 -Wall -Wextra -o test_converter tests/test_converter.cpp BinaryConverter.cpp
+./test_converter
+```
+
+A passing run prints `18 passed, 0 failed` and exits 0.
+
 ## Sample output (trimmed from an actual test run)
 
 ```
@@ -76,6 +88,7 @@ BinaryConverter.h/.cpp   Decimal ↔ binary conversion and binary-string validat
 BinaryMath.h/.cpp        Binary addition and subtraction (built on the converter)
 BitwisePlayground.h/.cpp Bitwise AND / OR / XOR with length padding
 HistoryManager.h/.cpp    In-session history of operations
+tests/test_converter.cpp Automated tests for BinaryConverter (run: see Tests above)
 LICENSE                  MIT
 ```
 
