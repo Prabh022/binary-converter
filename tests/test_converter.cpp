@@ -74,10 +74,19 @@ int main() {
     checkInt("binaryToDecimal(101010)", BinaryConverter::binaryToDecimal("101010"), 42);
     checkInt("binaryToDecimal(0)", BinaryConverter::binaryToDecimal("0"), 0);
 
+    // Hex -> decimal (added 2026-11-01; accepts upper- and lowercase)
+    checkInt("hexToDecimal(FF)", BinaryConverter::hexToDecimal("FF"), 255);
+    checkInt("hexToDecimal(1a)", BinaryConverter::hexToDecimal("1a"), 26);
+    checkInt("hexToDecimal(0)", BinaryConverter::hexToDecimal("0"), 0);
+
     // Validation
     checkBool("isValidBinary(1010)", BinaryConverter::isValidBinary("1010"), true);
     checkBool("isValidBinary(102)", BinaryConverter::isValidBinary("102"), false);
     checkBool("isValidBinary(empty)", BinaryConverter::isValidBinary(""), false);
+    checkBool("isValidHex(1A3F)", BinaryConverter::isValidHex("1A3F"), true);
+    checkBool("isValidHex(1a3f)", BinaryConverter::isValidHex("1a3f"), true);
+    checkBool("isValidHex(GG)", BinaryConverter::isValidHex("GG"), false);
+    checkBool("isValidHex(empty)", BinaryConverter::isValidHex(""), false);
 
     // Error paths
     checkThrows("decimalToBinary(-1) throws",
@@ -88,6 +97,10 @@ int main() {
                 [] { BinaryConverter::decimalToOctal(-5); });
     checkThrows("binaryToDecimal(102) throws",
                 [] { BinaryConverter::binaryToDecimal("102"); });
+    checkThrows("hexToDecimal(GG) throws",
+                [] { BinaryConverter::hexToDecimal("GG"); });
+    checkThrows("hexToDecimal(empty) throws",
+                [] { BinaryConverter::hexToDecimal(""); });
 
     std::cout << g_passed << " passed, " << g_failed << " failed\n";
     return g_failed == 0 ? 0 : 1;
