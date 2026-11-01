@@ -1,6 +1,6 @@
 # Binary Converter Toolkit
 
-A menu-driven C++ console program for working in binary: convert between decimal and binary, convert decimal to hexadecimal and octal, add and subtract binary numbers, run bitwise AND / OR / XOR, and review a history of everything you've done in the session.
+A menu-driven C++ console program for working in binary: convert between decimal and binary, convert decimal to hexadecimal and octal, convert hex back to decimal, add and subtract binary numbers, run bitwise AND / OR / XOR, and review a history of everything you've done in the session.
 
 Originally part of a C++ projects portfolio; it now lives in its own repository. The code is unchanged from the original — see `CHANGES.md`.
 
@@ -16,9 +16,10 @@ Originally part of a C++ projects portfolio; it now lives in its own repository.
 8. **Show History** — every successful operation this session, in order
 9. **Decimal to Hex** — uppercase hex digits (e.g. 255 → `FF`)
 10. **Decimal to Octal** — (e.g. 64 → `100`)
-11. **Exit**
+11. **Hex to Decimal** — enter a hex string, upper- or lowercase (e.g. `FF` → 255)
+12. **Exit**
 
-Invalid input (negative decimal, non-binary characters, subtraction that would go negative) prints an error and returns to the menu instead of crashing.
+Invalid input (negative decimal, non-binary or non-hex characters, subtraction that would go negative) prints an error and returns to the menu instead of crashing.
 
 ## Tech
 
@@ -39,7 +40,7 @@ g++ -std=c++17 -Wall -Wextra -o binary_converter main.cpp BinaryConverter.cpp Bi
 ## Tests
 
 Automated checks for `BinaryConverter` live in `tests/test_converter.cpp`
-(they cover decimal ↔ binary, hex, octal, validation, and the error paths):
+(they cover decimal ↔ binary, decimal ↔ hex, octal, validation, and the error paths):
 
 ```bash
 g++ -std=c++17 -Wall -Wextra -o test_converter tests/test_converter.cpp BinaryConverter.cpp

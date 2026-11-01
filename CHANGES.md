@@ -22,6 +22,12 @@ Standalone extraction from `cpp-projects-portfolio` (folder `binary-converter/`)
 - The original `Readme.md` was replaced by this repo's `README.md` (same feature list — the original readme's claims were checked against the code and all of them are real).
 - The original folder `.gitignore` (a Visual Studio template) was replaced with a minimal one covering the compiled binary.
 
+## 2026-11-01 — Hex to decimal conversion
+
+- Added `BinaryConverter::hexToDecimal` and `isValidHex` (menu option 11; Exit moved to 12). It accepts upper- and lowercase hex digits and rejects anything else with "Invalid hex string.", returning to the menu like the other error paths. Successful conversions are recorded in the session history.
+- `tests/test_converter.cpp` gained 9 checks (hex→decimal values, `isValidHex` true/false cases, and the invalid-input throws); the suite now has 27 checks.
+- Verified: test suite printed `27 passed, 0 failed` with exit 0; the main app builds warning-free with `g++ -std=c++17 -Wall -Wextra`; scripted menu run: `FF` → 255, `1a` → 26, `GG` → error and back to menu, then clean exit.
+
 ## 2026-10-26 — Automated tests for BinaryConverter
 
 - Added `tests/test_converter.cpp`: 18 checks covering decimal→binary,

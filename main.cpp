@@ -21,7 +21,8 @@ int main() {
         std::cout << "8. Show History\n";
         std::cout << "9. Decimal to Hex\n";
         std::cout << "10. Decimal to Octal\n";
-        std::cout << "11. Exit\n";
+        std::cout << "11. Hex to Decimal\n";
+        std::cout << "12. Exit\n";
         std::cout << "Enter your choice: ";
         std::cin >> choice;
 
@@ -106,6 +107,13 @@ int main() {
                 HistoryManager::addRecord("Decimal " + std::to_string(decimal) + " \u2192 Octal " + octal);
             }
             else if (choice == 11) {
+                std::cout << "Hex number: ";
+                std::cin >> input1;
+                int decimal = BinaryConverter::hexToDecimal(input1);
+                std::cout << " Decimal: " << decimal << "\n";
+                HistoryManager::addRecord("Hex " + input1 + " → Decimal " + std::to_string(decimal));
+            }
+            else if (choice == 12) {
                 std::cout << " Exiting Binary Converter. See you again!\n";
                 break;
             }

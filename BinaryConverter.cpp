@@ -49,7 +49,26 @@ std::string BinaryConverter::decimalToOctal(int decimal) {
     return octal;
 }
 
+int BinaryConverter::hexToDecimal(const std::string& hex) {
+    if (!isValidHex(hex)) throw std::invalid_argument("Invalid hex string.");
+    int decimal = 0;
+    for (char c : hex) {
+        decimal *= 16;
+        if (c >= '0' && c <= '9') decimal += c - '0';
+        else if (c >= 'A' && c <= 'F') decimal += c - 'A' + 10;
+        else decimal += c - 'a' + 10;
+    }
+    return decimal;
+}
+
 bool BinaryConverter::isValidBinary(const std::string& binary) {
     return !binary.empty() &&
         std::all_of(binary.begin(), binary.end(), [](char c) { return c == '0' || c == '1'; });
+}
+
+bool BinaryConverter::isValidHex(const std::string& hex) {
+    return !hex.empty() &&
+        std::all_of(hex.begin(), hex.end(), [](char c) {
+            return (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f');
+        });
 }

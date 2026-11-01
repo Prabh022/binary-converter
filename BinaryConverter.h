@@ -9,7 +9,9 @@ public:
     static std::string decimalToHex(int decimal);
     static std::string decimalToOctal(int decimal);
     static int binaryToDecimal(const std::string& binary);
+    static int hexToDecimal(const std::string& hex);
     static bool isValidBinary(const std::string& binary);
+    static bool isValidHex(const std::string& hex);
 };
 
 #endif
